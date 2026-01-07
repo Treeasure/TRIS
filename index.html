@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRIS – Treasure Island on TON</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('island-scene.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #0b1d2a; /* dark text for light background */
+      text-align: center;
+    }
+    /* overlay to improve readability on light background */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.55);
+      z-index: -1;
+    }
+    header {
+      padding: 60px 20px;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-weight: normal;
+      color: #ffd36a;
+    }
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .pirate-hero {
+      width: 220px;
+      max-width: 80%;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(255, 211, 106, 0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+      color: #0b1d2a;
+    }
+    .scene {
+      background: rgba(0,0,0,0.45);
+      padding: 40px 20px;
+      border-radius: 20px;
+    }
+    .pirate-full {
+      width: 320px;
+      max-width: 90%;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px rgba(0,0,0,0.6));
+    }
+    .island-image {
+      width: 100%;
+      display: block;
+      animation: glow 6s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 10px rgba(255,211,106,0.2)); }
+      50% { filter: drop-shadow(0 0 30px rgba(255,211,106,0.6)); }
+      100% { filter: drop-shadow(0 0 10px rgba(255,211,106,0.2)); }
+    }
+    .scene-gallery {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+    .scene-gallery img {
+      width: 220px;
+      max-width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+      50% { filter: drop-shadow(0 0 30px rgba(255,211,106,0.6)); }
+      100% { filter: drop-shadow(0 0 10px rgba(255,211,106,0.2)); }
+    }
+    footer {
+      padding: 30px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    a { color: #ffd36a; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="overlay"></div>
+
+<header>
+  <div class="hero">
+    <img src="pirate-logo.png" alt="TRIS Pirate" class="pirate-hero" />
+    <h1>🏴‍☠️ TRIS</h1>
+    <h2>Treasure Island</h2>
+    <p>Find the treasure. Hold TRIS.</p>
+  </div>
+</header>
+
+<section>
+  <div class="card">
+    <h3>About TRIS</h3>
+    <p>
+      TRIS is a meme coin inspired by pirates, treasure and adventure.
+      <br/><br/>
+      
+      Treasure is TRIS.
+      <br/><br/>
+      Only for fun.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Token Info</h3>
+    <p>
+      Name: Treasure Island<br/>
+      Symbol: TRIS<br/>
+      Network: TON<br/>
+      Total Supply: 1,000,000,000,000 TRIS
+    </p>
+  </div>
+
+  <div class="card converter">
+    <h3>TRIS Converter</h3>
+    <p>Live swap via DEX (TON Connect)</p>
+
+    <!-- TON Connect UI -->
+    <div id="ton-connect"></div>
+
+    <input type="number" id="amount" placeholder="Amount" />
+    <select id="from">
+      <option value="TRIS">TRIS</option>
+      <option value="TON">TON</option>
+    </select>
+    <select id="to">
+      <option value="TON">TON</option>
+      <option value="TRIS">TRIS</option>
+    </select>
+    <br/>
+    <button onclick="openSwap()">Swap on DEX</button>
+    <p id="result"></p>
+    <small>Swap opens in DEX with connected wallet</small>
+  </div>
+  <div class="card scene">
+    <img src="pirate-full.png" alt="TRIS Pirate" class="pirate-full" />
+  </div>
+  </div>
+
+  <div class="card journey">
+    <h3>Journey</h3>
+    <p>
+      No roadmap. No deadlines.<br/>
+      Only for fun! The adventure begins now!
+      <br/><br/>
+      Good Luck!
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    🏴‍☠️ TRIS – Treasure Island<br/>
+    <a href="https://t.me/+3597736497" target="_blank">Telegram</a> | 
+    <a href="https://x.com/CamaroVip555" target="_blank">Twitter</a>
+  </p>
+</footer>
+
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<script>
+  // TON Connect setup
+  const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: 'https://treeasure.github.io/TRIS/tonconnect-manifest.json'
+  });
+  tonConnectUI.render(document.getElementById('ton-connect'));
+
+  // Open swap on DEX (example: DeDust)
+  function openSwap() {
+    const amount = document.getElementById('amount').value || 0;
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+
+    // TODO: replace with your real TRIS jetton address
+    const TRIS_JETTON = EQApAkGmAeVuRA9akk5NIOj54uggJaf-T2HjCPA1o5c3ZTy2;
+
+    // DeDust swap URL (opens with wallet)
+    let url = 'https://dedust.io/swap';
+    if (from === 'TRIS') {
+      url += `?from=${TRIS_JETTON}&to=TON&amount=${amount}`;
+    } else {
+      url += `?from=TON&to=${TRIS_JETTON}&amount=${amount}`;
+    }
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
