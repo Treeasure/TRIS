@@ -112,7 +112,7 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
   </div>
 
   <div class="card scene">
-    <img src="coins TRIS.png" />
+    <img src="coins-TRIS.png" />
   </div>
 
   <div class="card journey">
@@ -136,20 +136,9 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
 
 <script>
   function openSwap() {
-    const amount = document.getElementById('amount').value || 0;
-    const from = document.getElementById('from').value;
-
     const TRIS_JETTON = "EQApAkGmAeVuRA9akk5NIOj54uggJaf-T2HjCPA1o5c3ZTy2";
-
-    let url = "https://ston.fi/swap";
-
-    if (from === "TRIS") {
-      url += `?from=${TRIS_JETTON}&to=TON&amount=${amount}`;
-    } else {
-      url += `?from=TON&to=${TRIS_JETTON}&amount=${amount}`;
-    }
-
-    window.open(url, "_blank");
+    const url = `https://ston.fi/swap?from=TON&to=${TRIS_JETTON}`;
+    window.open(url,"_blank");
   }
 </script>
 
