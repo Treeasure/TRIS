@@ -124,7 +124,7 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
   <div class="card converter" id="buy">
     <h3>Buy TRIS</h3>
     <p>Instant swap on STON.fi</p>
-    <button class="buy-btn" onclick="openSwap()">BUY TRIS</button>
+    <a class="buy-btn" href="https://app.ston.fi/swap?chartVisible=false&ft=TON&tt=STON" target="_blank">BUY TRIS</a>
     <p style="margin-top:14px;font-size:20px;">Wallet connects directly on DEX</p>
   </div>
 
@@ -151,13 +151,6 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
   </p>
 </footer>
 
-<script>
-  function openSwap() {
-    const TRIS_JETTON = "EQApAkGmAeVuRA9akk5NIOj54uggJaf-T2HjCPA1o5c3ZTy2";
-    const url = `https://ston.fi/swap?from=TON&to=${TRIS_JETTON}`;
-    window.open(url, "_blank");
-  }
-</script>
 
 </body>
 </html>
