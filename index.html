@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRIS – Treasure Island</title>
+  <title>TRIS – Treasure Island on TON</title>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap');
 
@@ -67,28 +67,36 @@ a:hover { text-decoration: underline; }
 
 .scene { padding: 40px 20px; }
 
-.pirate-full { width: 380px; max-width: 92%; animation: float 5s ease-in-out infinite; }
+.coins { width: 260px; max-width: 85%; animation: float 5s ease-in-out infinite; }
 
 footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hero">
+<header id="home">
+  <nav style="position:fixed;top:0;left:0;right:0;display:flex;justify-content:center;gap:28px;padding:14px 20px;background:rgba(255,255,255,0.0);z-index:10;">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#buy">Buy</a>
+    <a href="#journey">Journey</a>
+  </nav>
+
+  <div class="hero" style="padding-top:80px;">
     <img src="pirate-logo.png" alt="TRIS Pirate" class="pirate-hero" />
-    <h1> TRIS</h1>
-    <h2>Treasure Island</h2>
-    <p>Find the treasure. Hold TRIS.</p>
+    <h1>🏴‍☠️ TRIS</h1>
+    <h2>Treasure Island on TON</h2>
+    <p style="font-size:28px;font-weight:800;margin-top:14px;">🧭 Find the treasure. <span style="color:#ff8a00;">Hold TRIS.</span></p>
   </div>
 </header>
 
-<section>
+<section id="about">
   <div class="card">
     <h3>About TRIS</h3>
     <p>
-      TRIS is a meme coin inspired by pirates, adventure and treasure.
+      TRIS is a meme coin on the TON blockchain inspired by pirates, treasure and adventure.
       <br/><br/>
+      Gold is liquidity.<br/>
       Treasure is TRIS.
       <br/><br/>
       Only for fun.
@@ -96,15 +104,25 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
   </div>
 
   <div class="card">
-    <h3>Token Info</h3>
+    <h3>Token Info & Tokenomics</h3>
     <p>
-      Name: Treasure Island<br/>
-      Symbol: TRIS<br/>
-      Network: TON
+      <strong>Name:</strong> Treasure Island<br/>
+      <strong>Symbol:</strong> TRIS<br/>
+      <strong>Network:</strong> TON<br/>
+      <strong>Total Supply:</strong> 1,000,000,000,000 TRIS
+    </p>
+    <p style="margin-top:18px;">
+      <strong>🪙 Tokenomics</strong><br/>
+      💧 <strong>Liquidity (DEX):</strong> 85%<br/>
+      🔥 <strong>Burn / Future Utility:</strong> 10%<br/>
+      🏴‍☠️ <strong>Team & Marketing:</strong> 5%<br/>
+      <br/>
+      No taxes. No mint after launch.<br/>
+      Fixed supply. Only adventure.
     </p>
   </div>
 
-  <div class="card converter">
+  <div class="card converter" id="buy">
     <h3>Buy TRIS</h3>
     <p>Instant swap on STON.fi</p>
     <button class="buy-btn" onclick="openSwap()">BUY TRIS</button>
@@ -113,28 +131,22 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
 
   <div class="card scene">
     <img src="coins-TRIS.png" alt="TRIS Coins" class="coins" />
-    <style>
-     .coins {
-  width: 260px;
-  max-width: 85%;
-  animation: float 5s ease-in-out infinite;
-}
- </div>
+  </div>
 
-  <div class="card journey">
+  <div class="card journey" id="journey">
     <h3>Journey</h3>
     <p>
-       No deadlines.<br/>
-      One island - one Treasure - one TRIS.
+      No roadmap. No deadlines.<br/>
+      Just an island, a map, and a crew.
       <br/><br/>
-      Only fun and adventure! 
+      TRIS is about the adventure — not the destination.
     </p>
   </div>
 </section>
 
 <footer>
   <p>
-     TRIS – Treasure Island<br/>
+    🏴‍☠️ TRIS – Treasure Island on TON<br/>
     <a href="https://t.me/+0ySoOvMCOHM0MjI0" target="_blank">Telegram</a> | 
     <a href="https://x.com/CamaroVip555" target="_blank">Twitter</a>
   </p>
@@ -144,7 +156,7 @@ footer { padding: 44px 20px; font-size: 20px; font-weight: 700; }
   function openSwap() {
     const TRIS_JETTON = "EQApAkGmAeVuRA9akk5NIOj54uggJaf-T2HjCPA1o5c3ZTy2";
     const url = `https://ston.fi/swap?from=TON&to=${TRIS_JETTON}`;
-    window.open(url,"_blank");
+    window.open(url, "_blank");
   }
 </script>
 
